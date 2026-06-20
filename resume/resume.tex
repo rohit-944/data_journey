@@ -1,72 +1,121 @@
 %-------------------------
-% Rohit Kumar - Resume
-% Target: Data Analyst | Analytics Engineer | Data Engineer
+% Rezume, a latex resume template for developers
+% Author : Nanu Panchamurthy
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+
+% Hope this resume template helps you land an awesome job. If you found this helpful, please consider starring the github repo here, .
 %-------------------------
+
+
 
 %------------PACKAGES----------------
 \documentclass[a4paper,11pt]{article}
 
 \usepackage{fontawesome}
-\usepackage{verbatim}
-\usepackage{titlesec}
-\usepackage{color}
-\usepackage{enumitem}
-\usepackage{fancyhdr}
-\usepackage{tabularx}
-\usepackage{latexsym}
-\usepackage{marvosym}
-\usepackage[empty]{fullpage}
-\usepackage[hidelinks]{hyperref}
-\usepackage[normalem]{ulem}
-\usepackage[english]{babel}
+
+\usepackage{verbatim} % reimplements the "verbatim" and "verbatim*" environments
+
+\usepackage{titlesec} % provides an interface to sectioning commands i.e. custom elements
+
+\usepackage{color} % provides both foreground and background color management
+
+\usepackage{enumitem} % provides control over enumerate, itemize and description
+
+\usepackage{fancyhdr} % provides extensive facilities for constructing headers, footers and also controlling their use
+
+\usepackage{tabularx} % defines an environment tabularx, extension of "tabular" with an extra designator x, paragraph like column whose width automatically expands to fill the width of the environment
+
+\usepackage{latexsym} % provides mathematical symbols
+
+\usepackage{marvosym} % provides martin vogel's symbol font which contains various symbols
+
+\usepackage[empty]{fullpage} % sets margins to one inch and removes headers, footers etc..
+
+\usepackage[hidelinks]{hyperref} % removes color and shadow of hyperlinks
+
+\usepackage[normalem]{ulem} % provides "\ul" (uline) command which will break at line breaks
+
+\usepackage[english]{babel} % provides culturally determined typographical rules for wide range of languages
 %-----------------------------------------
 
-\input glyphtounicode
-\pdfgentounicode=1
+\input glyphtounicode % converts glyph names to unicode
+\pdfgentounicode=1 % ensures pdfs generated are ats readable
 
 %----------FONT OPTIONS-------------------
-\usepackage[default]{sourcesanspro}
-\urlstyle{same}
+\usepackage[default]{sourcesanspro} % uses the font source sans pro
+\urlstyle{same} % changes url font from default urlfont to font being used by the document
 %-----------------------------------------
 
+
 %----------MARGIN OPTIONS-----------------
-\pagestyle{fancy}
-\fancyhf{}
+\pagestyle{fancy} % set page style to one configured by fancyhdr
+\fancyhf{} % clear all header and footer fields
 
-\renewcommand{\headrulewidth}{0in}
-\renewcommand{\footrulewidth}{0in}
+\renewcommand{\headrulewidth}{0in} % sets thickness of linerule under header to zero
+\renewcommand{\footrulewidth}{0in} % sets thickness of linerule over footer to zero
 
-\setlength{\tabcolsep}{0in}
+\setlength{\tabcolsep}{0in} % sets thickness of column separator in tables to zero
 
+% origin of the document is one inch from the top and from and the left
+% oddsidemargin and evensidemargin both refer to the left margin
+% right margin is indirectly set using oddsidemargin
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\topmargin}{-0.5in}
 
-\addtolength{\textwidth}{1.0in}
-\addtolength{\textheight}{1.0in}
+\addtolength{\textwidth}{1.0in} % sets width of text area in the page to one inch
+\addtolength{\textheight}{1.0in} % sets height of text area in the page to one inch
 
-\raggedbottom{}
-\raggedright{}
+\raggedbottom{} % makes all pages the height of current page, no extra vertical space added
+\raggedright{} % makes all pages the width of current page, no extra horizontal space added
 %------------------------------------------
 
+
 %--------SECTIONING COMMANDS---------
+% \titleformat{<command>}
+%   [<shape>]{<format>}{<label>}{<sep>}
+%     {<before-code>}[<after-code>]
+
+% command is the sectioning command to be redefined
+% shape is the style of the font; scshape stands for small caps style
+% format is the format to be applied to whole title- label and text; absent here
+% label defines the label
+% sep is the horizontal separation between label and title body
+% before-code is the code to be executed before
+% after-code is the code to be executed after
+
+%\titleformat{\section}
+%  {\scshape\large}{}
+%    {0em}{\color{blue}}[\color{black}\titlerule\vspace{0pt}]
+
 \titleformat{\section}
   {\large\bfseries}{}
     {0em}{\color{black}}[\color{black}\titlerule\vspace{0pt}]
 %-------------------------------------
 
+
 %--------REDEFINITIONS----------------
+% redefines the style of the bullet point
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% redefines the underline depth to 2pt
 \renewcommand{\ULdepth}{2pt}
 %-------------------------------------
 
+
 %--------CUSTOM COMMANDS--------------
+%\vspace{} defines a vertical space of given size, modifying this in custom commands can help stretch or shrink resume to remove or add content
+
+% resumeItem renders a bullet point
 \newcommand{\resumeItem}[1]{
   \item\small{#1}
 }
 
+% commands to start and end itemization of resumeItem, rightmargin set to 0.11in to avoid the overflow of resumetItem beyond whatever resumeItemHeading is being used
 \newcommand{\resumeItemListStart}{\begin{itemize}[rightmargin=0.11in]}
 \newcommand{\resumeItemListEnd}{\end{itemize}}
 
+% resumeSectionType renders a bolded type to be used under a section, used as skill type here, middle element is used to keep ":"s in the same vertical line
 \newcommand{\resumeSectionType}[3]{
   \item\begin{tabular*}{0.96\textwidth}[t]{
     p{0.16\linewidth}p{0.02\linewidth}p{0.81\linewidth}
@@ -75,6 +124,7 @@
   \end{tabular*}\vspace{-2pt}
 }
 
+% resumeTrioHeading renders three elements in three columns with second element being italicized and first element bolded, can be used for projects with three elements
 \newcommand{\resumeTrioHeading}[3]{
   \item\small{
     \begin{tabular*}{0.96\textwidth}[t]{
@@ -85,6 +135,7 @@
   }
 }
 
+% resumeQuadHeading renders four elements in a two columns with the second row being italicized and first element of first row bolded, can be used for experience and projects with four elements
 \newcommand{\resumeQuadHeading}[4]{
   \item
   \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
@@ -93,6 +144,7 @@
   \end{tabular*}
 }
 
+% resumeQuadHeadingChild renders the second row of resumeQuadHeading, can be used for experience if different roles in the same company need to added
 \newcommand{\resumeQuadHeadingChild}[2]{
   \item
   \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
@@ -100,6 +152,7 @@
   \end{tabular*}
 }
 
+% commands to start and end itemization of resumeQuadHeading, lefmargin for left indent of 0.15in for resumeItems
 \newcommand{\resumeHeadingListStart}{
   \begin{itemize}[leftmargin=0.15in, label={}]
 }
@@ -108,61 +161,69 @@
 
 
 %__________________RESUME____________________
+% You can rearrange sections in any order you may prefer
 \begin{document}
 
 %-----------CONTACT DETAILS------------------
+% Make sure all the details are correct, you can add more links in the first row of second column if needed
+
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-  \textbf{\Huge Rohit Kumar \vspace{2pt}} & \\
+  \textbf{\Huge Rohit Kumar \vspace{2pt}} & % row = 1, col = 1
+ \textbf{} \\ % row = 1, col = 2
   \small \raisebox{-0.1\height}\faPhone\ +91 8538938666  $|$
-  \href{mailto:rohitkumar.me944@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{rohitkumar.me944@gmail.com}} $|$
-  \href{https://github.com/rohit-944}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/rohit-944}}
-   $|$
-  \href{https://linkedin.com/in/rohit944}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/rohit944}}
- & \\
+  \href{mailto:rohitkumar.me944@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{rohitkumar.me944@gmail.com}} $|$ % row = 2, col = 1
+  \href{https://github.com/rohit-944}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/rohit-944}} % row = 2, col = 1
+   $|$ % row = 2, col = 1
+  \href{https://linkedin.com/in/rohit944}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/rohit944}} % row = 2, col = 1
+ & % row = 2, col = 1
+  % row = 2, col = 2
+  \\ % row = 2, col = 2
 \end{tabular*}
 %--------------------------------------------
 
 
 %-----------SUMMARY--------------------------
+% Keep this short, simple and straigth to point
+
 \section{Profile Summary}
-\small{B.Tech CSE (AI) graduate with hands-on experience in SQL, Python, Power BI, and ETL pipeline development. Built end-to-end data projects covering EDA, dashboards, data modeling, and pipeline automation. Seeking Data Analyst / Analytics Engineer / Data Engineer roles to solve business problems with data.}
+\small{B.Tech CSE (AI) graduate skilled in SQL, Python, Power BI, PySpark, AWS S3, and ETL pipeline development. Seeking Data Analyst, Analytics Engineer, or Data Engineer roles to turn data into business impact.}
+\vspace{4pt}
 
 %--------------------------------------------
 \section{Education}
   \resumeHeadingListStart{}
-    \resumeQuadHeading{B.Tech Computer Science Engineering (AI Specialization) $|$ CGPA: 7.90}{Sep 2021 -- May 2025}
-    {Audisankara College of Engineering and Technology}{Gudur, Andhra Pradesh}
+    \resumeQuadHeading{B.Tech Computer Science Engineering (AI) $|$ CGPA: 7.90}{Sep 2021 -- May 2025}
+    {Audisankara College of Engineering and Technology}{Gudur, Andhra Pradesh, India}
   \resumeHeadingListEnd{}
 
 %--------------SKILLS------------------------
+% Add or remove resumeSectionTypes according to your needs
+
 \section{Technical Skills}
     \resumeItemListStart{}
-     \resumeItem{\textbf{Programming \& Querying:} Python (Pandas, NumPy, Seaborn, scikit-learn), SQL (Joins, CTEs, Window Functions, Subqueries, Aggregations)}
-     
-     \resumeItem{\textbf{Visualization Tools:} Power BI (DAX, Power Query, Star Schema), Advanced Excel (VLOOKUP, XLOOKUP, Pivot Tables, Charts)}
+     \resumeItem{\textbf{Languages \& Libraries:} Python (Pandas, NumPy, Matplotlib), SQL}
 
-     \resumeItem{\textbf{Data Analysis:} Data Cleaning, Data Preprocessing, EDA, KPI Analysis, RFM \& Cohort Analysis, Hypothesis Testing}
-     
-     \resumeItem{\textbf{Database:} PostgreSQL, MySQL, SQLite}
-               
-     \resumeItem{\textbf{Data Engineering:} ETL Pipeline Development, Data Modeling, Schema Design, Data Warehousing, Data Transformation}
+     \resumeItem{\textbf{Visualization \& Databases:} Power BI, Advanced Excel, PostgreSQL, MySQL, SQLite}
 
-     \resumeItem{\textbf{Tools:} Git, GitHub, Jupyter Notebook, DBeaver}
+     \resumeItem{\textbf{Data Engineering:} ETL Pipelines, dbt, PySpark, Airflow, AWS S3, Data Modeling, Data Ingestion, Data Processing}
+
+     \resumeItem{\textbf{Tools:} Git, Docker, Jupyter Notebook, DBeaver, AI Tools (ChatGPT, Claude) for development}
     \resumeItemListEnd{}
 %--------------------------------------------
 
 
 %-----------EXPERIENCE-----------------------
+% Distill all your talking points to small bullet points which follow the pattern "challenge-action-result" for maximum efficiency. Try to quantify (use numbers) your points whenver possible, highlist words of importance
+
 \section{Experience}
 \resumeHeadingListStart{}
-  \resumeQuadHeading{Data Analyst Intern}{Dec 2024 -- Apr 2025}
-  {Council for Skills and Competencies (CSC India)}{Andhra Pradesh, India}
+  \resumeQuadHeading{Data Analyst Intern }{Dec 2024 -- Apr 2025}
+  {Council for skills and Competencies(CSC India)}{Andhra Pradesh, India}
     \resumeItemListStart{}
-      \resumeItem{Cleaned and preprocessed 10,000+ records using Python (Pandas, NumPy), reducing data inconsistencies by 40\%.}
-      \resumeItem{Built 8+ visualizations using Matplotlib and Seaborn to identify revenue trends and customer segments.}
-      \resumeItem{Performed EDA on sales datasets, uncovering 3 key business insights that informed reporting decisions.}
-      \resumeItem{Implemented a classification model (scikit-learn) achieving 85\% accuracy on customer segmentation task.}
-      \resumeItem{Collaborated with a team of 4 on data-driven projects, delivering weekly analysis reports to stakeholders.}
+      \resumeItem{Cleaned and preprocessed 20,000+ records using Python (Pandas, NumPy), handling missing values, duplicates, and type conversions to prepare data for analysis.}
+      \resumeItem{Performed exploratory data analysis (EDA) and built Matplotlib visualizations to identify trends and insights.}
+      \resumeItem{Implemented a scikit-learn machine learning model for prediction, achieving 82\% accuracy.}
+      \resumeItem{Collaborated with a team on data-driven projects, delivering analysis reports that supported decision-making.}
     \resumeItemListEnd{}
 
 \resumeHeadingListEnd{}
@@ -170,30 +231,33 @@
 
 
 %-----------PROJECTS--------------------------
+% Use resumeQuadHeading if four elements are feasible (ex: demo video link), else use resumeTrioHeading. Keep the bullet points simple and concise and try to cover wide variety of skills you have used to build these projects
+
 \section{Projects}
   \resumeHeadingListStart{}
 
     \resumeTrioHeading
         {Retail Analytics Dashboard}
-        {Python, SQL, Power BI, ETL}
+        {Python (Pandas, SQLite), SQL, Power BI}
         {\href{https://github.com/rohit-944/Retail_Analytics_Dashboard}{\underline{\textbf{GitHub}}}}
           \resumeItemListStart{}
-            \resumeItem{Built an end-to-end ETL pipeline: extracted raw CSV data, transformed with Pandas, loaded into SQLite database.}
-            \resumeItem{Designed normalized star schema and wrote advanced SQL queries for revenue trends and customer analysis.}
-            \resumeItem{Performed RFM segmentation and cohort retention analysis to identify high-value customer segments.}
-            \resumeItem{Developed interactive Power BI dashboard with 10+ KPIs, drill-through pages, and geographic insights.}
-            \resumeItem{Analyzed \$1.4M revenue across 499 customers, delivering 5 actionable recommendations for growth.}
+            \resumeItem{Built an end-to-end retail ETL pipeline using Python to clean, transform, and load sales data into SQLite.}
+            \resumeItem{Designed a normalized database and applied advanced SQL for revenue trends and customer analysis.}
+            \resumeItem{Performed RFM segmentation and cohort retention analysis to track customer lifecycle behavior.}
+            \resumeItem{Developed an interactive Power BI dashboard with KPIs, sales trends, and geographic insights.}
+            \resumeItem{Analyzed \$1.4M revenue across 499 customers to generate actionable business decisions.}
           \resumeItemListEnd{}
 
     \resumeTrioHeading
         {Sales Performance Dashboard}
-        {Power BI, SQL, Excel, DAX}
+        {Power BI, SQL, Excel}
         {\href{https://github.com/rohit-944/Sales_Performance_Dashboard}{\underline{\textbf{GitHub}}}}
           \resumeItemListStart{}
-            \resumeItem{Built multi-page interactive Power BI dashboard analyzing sales trends across 4 regions and 50+ products.}
-            \resumeItem{Wrote SQL queries to extract and transform raw sales data; created DAX measures for YoY growth and KPIs.}
-            \resumeItem{Identified 3 underperforming regions contributing to 20\% revenue decline, enabling targeted interventions.}
-            \resumeItem{Automated daily sales reporting workflow, reducing manual effort by 30\% (5 hours/week saved).}
+            \resumeItem{Built an interactive dashboard using Power BI to analyze sales trends across regions.}
+            \resumeItem{Extracted and cleaned raw sales data using SQL queries, visualized KPIs (revenue, growth, top products).}
+            \resumeItem{Helped identify sales decline areas and improved reporting efficiency.}
+            \resumeItem{Automated daily sales reports, reducing manual work by 30\%.}
+            \resumeItem{Provided insights that supported strategic decisions for regional sales improvement.}
           \resumeItemListEnd{}
             
 
@@ -201,18 +265,22 @@
 %--------------------------------------------
 
 
-%----------------CERTIFICATIONS----------------------
+%----------------OTHERS----------------------
+% You can add your acheivements, accolades, certifications etc. here.
+
 \section{Certifications}
   \resumeItemListStart{}
 
-    \resumeItem{Data Analytics Job Simulation -- Deloitte (Forage) $|$
-    \href{https://drive.google.com/file/d/18-UqFQCcVPAuZ6GHhrMMeC90eEm5NFfk/view?usp=sharing}{\underline{\textbf{Link}}}}
+    \resumeItem{Certificate of Data Analytics Job Simulation -- Deloitte (Forage) $|$
+    \href{https://drive.google.com/file/d/18-UqFQCcVPAuZ6GHhrMMeC90eEm5NFfk/view?usp=sharing}{\underline{\textbf{Certificate Link}}}}
     
-    \resumeItem{Databases and SQL for Data Science with Python -- IBM (Coursera) $|$    \href{https://www.coursera.org/account/accomplishments/verify/NO4KWV0K7SLY}{\underline{\textbf{Link}}}}
+    \resumeItem{Certificate of Databases and SQL for Data Science with Python -- IBM $|$    \href{https://www.coursera.org/account/accomplishments/verify/NO4KWV0K7SLY}{\underline{\textbf{Certificate Link}}}}
     
-    \resumeItem{Python for Data Science, AI \& Development -- IBM (Coursera) $|$    \href{https://www.coursera.org/account/accomplishments/verify/N3WBHK7CEWXJ}{\underline{\textbf{Link}}}}
+    \resumeItem{Certificate of Python for Data Science, AI \& Development -- IBM $|$    \href{https://www.coursera.org/account/accomplishments/verify/N3WBHK7CEWXJ}{\underline{\textbf{Certificate Link}}}}
     
-    \resumeItem{Data Visualization and Dashboards with Excel and Cognos -- IBM (Coursera) $|$    \href{https://www.coursera.org/account/accomplishments/verify/2R0E4QDSHV58}{\underline{\textbf{Link}}}}
+    \resumeItem{Certificate of Data Visualization and Dashboards with Excel and Cognos -- IBM $|$    \href{https://www.coursera.org/account/accomplishments/verify/2R0E4QDSHV58}{\underline{\textbf{Certificate Link}}}}
+    
+    \resumeItem{Certificate of Excel for Data Analysis -- IBM $|$    \href{https://www.coursera.org/account/accomplishments/verify/33T9WXFDICUO}{\underline{\textbf{Certificate Link}}}}
  
   \resumeItemListEnd{}
 %--------------------------------------------
