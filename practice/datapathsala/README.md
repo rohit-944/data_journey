@@ -11,4 +11,5 @@ Track your daily DataPathSala progress here.
 
 | Date | SQL | PySpark | Topic | Notes |
 |------|-----|---------|-------|-------|
-| | | | | |
+| 2026-06-16 | 8 | 0 | SELECT, WHERE, Basic Joins | Day 1 done! Ankit Bansal videos + 8 problems |
+| 2026-06-17 to 06-20 | 16 | 0 | GROUP BY, HAVING, JOINs | PostgreSQL + DBeaver installed ✅ |
